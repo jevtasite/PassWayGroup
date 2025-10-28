@@ -15,7 +15,7 @@ export default {
         'ghost-white': '#F8F8F8',
       },
       fontFamily: {
-        'display': ['Space Grotesk', 'sans-serif'],
+        'display': ['Electrolize', 'sans-serif'],
         'body': ['IBM Plex Sans', 'sans-serif'],
         'mono': ['JetBrains Mono', 'monospace'],
       },

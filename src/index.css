@@ -62,11 +62,6 @@
   .text-gradient-gold {
     @apply bg-gradient-to-r from-accent-gold to-yellow-600 bg-clip-text text-transparent;
   }
-
-  /* Prevent FOUT (Flash of Unstyled Text) */
-  .font-loaded {
-    font-family: 'Space Grotesk', sans-serif;
-  }
 }
 
 /* Custom scrollbar */

@@ -27,7 +27,7 @@ export const Navigation: React.FC = () => {
             </a>
 
             {/* Desktop Menu */}
-            <ul className="hidden md:flex items-center space-x-12">
+            <ul className="hidden md:flex items-center space-x-10">
               {menuItems.map((item) => (
                 <li key={item.name}>
                   <a
