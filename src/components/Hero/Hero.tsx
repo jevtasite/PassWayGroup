@@ -12,9 +12,9 @@ export const Hero: React.FC = () => {
     document.getElementById("players")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handlePartnerClick = () => {
+  /* const handlePartnerClick = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
+  };*/
 
   const handleWatchVideo = () => {
     setIsVideoModalOpen(true);
@@ -73,13 +73,16 @@ export const Hero: React.FC = () => {
           <div className="absolute top-0 bottom-0 right-0 w-px bg-gradient-to-b from-transparent via-accent-gold/30 to-transparent" />
 
           {/* Subtle grid overlay */}
-          <div className="absolute inset-0 opacity-5" style={{
-            backgroundImage: `
+          <div
+            className="absolute inset-0 opacity-5"
+            style={{
+              backgroundImage: `
               linear-gradient(rgba(212, 165, 16, 0.1) 1px, transparent 1px),
               linear-gradient(90deg, rgba(212, 165, 16, 0.1) 1px, transparent 1px)
             `,
-            backgroundSize: '100px 100px'
-          }} />
+              backgroundSize: "100px 100px",
+            }}
+          />
         </div>
       </div>
 
@@ -159,7 +162,7 @@ export const Hero: React.FC = () => {
                 { city: "Leipzig", country: "Germany" },
                 { city: "Munich", country: "Germany" },
                 { city: "Sofia", country: "Bulgaria" },
-                { city: "Basel", country: "Switzerland" }
+                { city: "Basel", country: "Switzerland" },
               ].map((office, index) => (
                 <motion.div
                   key={office.city}
