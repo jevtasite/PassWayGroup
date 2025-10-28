@@ -93,9 +93,13 @@ export const Hero: React.FC = () => {
           {/* Main Headline */}
           <motion.h1
             className="font-display font-bold text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight tracking-tight mb-4 sm:mb-5 md:mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            initial={{ opacity: 0, scale: 0.9, y: 50, filter: "blur(10px)" }}
+            animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+            transition={{
+              duration: 1.2,
+              delay: 0.2,
+              ease: [0.16, 1, 0.3, 1]
+            }}
           >
             Elite Talent.
             <br />
@@ -105,9 +109,13 @@ export const Hero: React.FC = () => {
           {/* Tagline with accent */}
           <motion.div
             className="mb-5 sm:mb-7 md:mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            initial={{ opacity: 0, x: -30, filter: "blur(8px)" }}
+            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            transition={{
+              duration: 0.9,
+              delay: 0.6,
+              ease: [0.16, 1, 0.3, 1]
+            }}
           >
             <div className="inline-flex items-center gap-1.5 sm:gap-2 md:gap-3 px-3 py-2 sm:px-4 sm:py-2.5 md:px-5 md:py-3 border border-accent-gold/30 bg-black/30 backdrop-blur-sm">
               <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-accent-gold rounded-full animate-pulse" />
@@ -121,9 +129,13 @@ export const Hero: React.FC = () => {
           {/* CTA Buttons */}
           <motion.div
             className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 md:gap-4 justify-center items-center px-2 sm:px-0"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{
+              duration: 0.8,
+              delay: 0.9,
+              ease: [0.16, 1, 0.3, 1]
+            }}
           >
             <PrimaryButton onClick={handleDiscoverClick}>
               Discover Our Players
@@ -139,16 +151,24 @@ export const Hero: React.FC = () => {
           {/* Office Locations */}
           <motion.div
             className="mt-10 md:mt-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.8,
+              delay: 1.1,
+              ease: [0.16, 1, 0.3, 1]
+            }}
           >
             {/* Section label */}
             <motion.div
               className="flex items-center justify-center gap-2 md:gap-3 mb-5 md:mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1.3 }}
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{
+                duration: 0.7,
+                delay: 1.3,
+                ease: [0.16, 1, 0.3, 1]
+              }}
             >
               <div className="h-px w-8 md:w-12 bg-gradient-to-r from-transparent to-accent-gold/50" />
               <span className="font-body text-[10px] md:text-xs text-accent-gold/60 uppercase tracking-[0.2em]">
@@ -168,9 +188,14 @@ export const Hero: React.FC = () => {
                 <motion.div
                   key={office.city}
                   className="relative group"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1.4 + index * 0.1 }}
+                  initial={{ opacity: 0, y: 30, rotateX: 45 }}
+                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 1.5 + index * 0.1,
+                    ease: [0.16, 1, 0.3, 1]
+                  }}
+                  style={{ transformPerspective: 1000 }}
                 >
                   {/* Card background with border */}
                   <div className="relative px-3 py-4 md:px-5 md:py-6 border border-accent-gold/20 bg-black/40 backdrop-blur-sm overflow-hidden group-hover:border-accent-gold/40 transition-all duration-slow">
