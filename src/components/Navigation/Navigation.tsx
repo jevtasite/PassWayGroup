@@ -18,8 +18,12 @@ export const Navigation: React.FC = () => {
         <div className="container-site">
           <div className="flex items-center justify-between py-6">
             {/* Logo */}
-            <a href="#home" className="text-2xl font-display font-bold text-white">
-              PassWay<span className="text-accent-gold">.</span>
+            <a href="#home" className="flex items-center">
+              <img
+                src="/images/logo/passway-logo.png"
+                alt="PassWay Group"
+                className="h-9 w-auto"
+              />
             </a>
 
             {/* Desktop Menu */}

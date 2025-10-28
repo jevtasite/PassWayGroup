@@ -10,9 +10,11 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Logo & Tagline */}
           <div>
-            <h3 className="text-2xl font-display font-bold text-white mb-4">
-              PassWay<span className="text-accent-gold">.</span>
-            </h3>
+            <img
+              src="/images/logo/passway-logo.png"
+              alt="PassWay Group"
+              className="h-12 w-auto mb-4"
+            />
             <p className="font-body text-body-small text-ghost-white">
               The boutique agency for Elite talents!
             </p>
