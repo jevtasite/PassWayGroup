@@ -1,10 +1,25 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { PrimaryButton } from '../Button/PrimaryButton';
 import { OutlineButton } from '../Button/OutlineButton';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Play, X } from 'lucide-react';
 
 export const Hero: React.FC = () => {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const backgroundVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = backgroundVideoRef.current;
+    if (video) {
+      // Play for 8 seconds then pause
+      const timer = setTimeout(() => {
+        video.pause();
+      }, 8000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   const handleDiscoverClick = () => {
     document.getElementById('players')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -13,13 +28,21 @@ export const Hero: React.FC = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleWatchVideo = () => {
+    setIsVideoModalOpen(true);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoModalOpen(false);
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
+          ref={backgroundVideoRef}
           autoPlay
-          loop
           muted
           playsInline
           className="w-full h-full object-cover"
@@ -71,18 +94,6 @@ export const Hero: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Description */}
-          <motion.p
-            className="font-body text-lg md:text-xl text-ghost-white/90 mb-12 max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-          >
-            PassWay Group represents the finest football talent with personalized attention
-            and expert negotiation. We are committed to building lasting careers through
-            strategic guidance and unwavering dedication.
-          </motion.p>
-
           {/* CTA Buttons */}
           <motion.div
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
@@ -93,39 +104,49 @@ export const Hero: React.FC = () => {
             <PrimaryButton onClick={handleDiscoverClick}>
               Discover Our Players
             </PrimaryButton>
-            <OutlineButton onClick={handlePartnerClick}>
-              Partner With Us
+            <OutlineButton onClick={handleWatchVideo}>
+              <div className="flex items-center gap-2">
+                <Play size={18} />
+                <span>Watch Video</span>
+              </div>
             </OutlineButton>
           </motion.div>
 
-          {/* Stats Strip */}
+          {/* Office Locations */}
           <motion.div
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+            className="mt-20"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.5 }}
           >
-            {[
-              { number: '15+', label: 'Years' },
-              { number: '50+', label: 'Players' },
-              { number: '200+', label: 'Transfers' },
-              { number: '30+', label: 'Clubs' },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                className="text-center"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 1.7 + index * 0.1 }}
-              >
-                <div className="font-mono text-3xl md:text-4xl font-bold text-accent-gold mb-2">
-                  {stat.number}
-                </div>
-                <div className="font-body text-sm text-ghost-white/70 uppercase tracking-wider">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 max-w-4xl mx-auto">
+              {['Leipzig', 'Munich', 'Sofia', 'Basel'].map((city, index) => (
+                <motion.div
+                  key={city}
+                  className="relative group"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 1.7 + index * 0.15 }}
+                >
+                  {/* Gold dot indicator */}
+                  <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-accent-gold rounded-full" />
+
+                  <span className="font-display text-lg md:text-xl text-ghost-white group-hover:text-accent-gold transition-colors duration-quick tracking-wide">
+                    {city}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Subtle label */}
+            <motion.p
+              className="text-center mt-4 font-body text-xs text-ghost-white/50 uppercase tracking-widest"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 2.2 }}
+            >
+              Our Offices
+            </motion.p>
           </motion.div>
         </div>
       </div>
@@ -150,6 +171,49 @@ export const Hero: React.FC = () => {
 
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-void-black to-transparent z-10" />
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {isVideoModalOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeVideoModal}
+          >
+            <motion.div
+              className="relative w-full max-w-6xl mx-4 aspect-video"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={closeVideoModal}
+                className="absolute -top-12 right-0 text-white hover:text-accent-gold transition-colors duration-quick"
+                aria-label="Close video"
+              >
+                <X size={32} />
+              </button>
+
+              {/* Video player */}
+              <video
+                className="w-full h-full"
+                controls
+                autoPlay
+              >
+                <source src="/videos/passway-hero.mp4" type="video/mp4" />
+              </video>
+
+              {/* Gold border accent */}
+              <div className="absolute inset-0 border-2 border-accent-gold/30 pointer-events-none" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
