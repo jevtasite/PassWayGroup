@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply m-0 p-0 bg-void-black text-ghost-white font-body antialiased;
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    @apply outline-2 outline-accent-gold outline-offset-4;
+  }
+
+  /* Screen reader only class */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
+  }
+}
+
+@layer components {
+  /* Floating card effect */
+  .floating-card {
+    @apply bg-charcoal border border-white/5 transition-all duration-quick ease-expo-out;
+  }
+
+  .floating-card:hover {
+    @apply border-white/10 -translate-y-3;
+  }
+
+  /* Form inputs */
+  .form-input {
+    @apply w-full px-4 py-4 bg-charcoal border border-white/10 text-white font-body text-body placeholder:text-ghost-white/30 transition-all duration-quick focus:outline-none focus:border-accent-gold;
+  }
+
+  .form-input:focus {
+    @apply border-accent-gold;
+  }
+
+  /* Container */
+  .container-site {
+    @apply max-w-site mx-auto px-6 md:px-12;
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+}
+
+@layer utilities {
+  /* Text gradient gold */
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-accent-gold to-yellow-600 bg-clip-text text-transparent;
+  }
+
+  /* Prevent FOUT (Flash of Unstyled Text) */
+  .font-loaded {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4A510;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F5E6C3;
+}
+
+/* Selection color */
+::selection {
+  background: #D4A510;
+  color: #000000;
+}
+
+::-moz-selection {
+  background: #D4A510;
+  color: #000000;
+}
