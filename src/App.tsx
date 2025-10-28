@@ -5,7 +5,7 @@ import { ElitePlayers } from './components/ElitePlayers/ElitePlayers';
 import { Services } from './components/Services/Services';
 import { WhyChoose } from './components/WhyChoose/WhyChoose';
 import { Contact } from './components/Contact/Contact';
-import { Footer } from './components/Footer/Footer';
+import { BackToTop } from './components/BackToTop/BackToTop';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <WhyChoose />
         <Contact />
       </main>
-      <Footer />
+      <BackToTop />
     </div>
   );
 }
