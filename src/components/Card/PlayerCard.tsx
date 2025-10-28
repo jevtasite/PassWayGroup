@@ -104,31 +104,12 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {
             </span>
           </div>
 
-          {/* View profile button - always visible on mobile, appears on hover on desktop */}
+          {/* View profile button - always visible */}
           <div className="mt-4 w-full">
-            {/* Mobile: always visible */}
-            <div className="md:hidden flex items-center justify-center gap-2 w-full py-3 bg-accent-gold text-void-black font-display font-bold text-sm uppercase tracking-wider hover:bg-accent-gold/90 transition-colors cursor-pointer">
+            <div className="flex items-center justify-center gap-2 w-full py-3 bg-accent-gold text-void-black font-display font-bold text-sm uppercase tracking-wider hover:bg-accent-gold/90 transition-colors cursor-pointer">
               <span>View Profile</span>
               <ArrowUpRight size={18} />
             </div>
-
-            {/* Desktop: appears on hover with animation */}
-            <AnimatePresence>
-              {isHovered && (
-                <motion.div
-                  className="hidden md:block"
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 20, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <div className="flex items-center justify-center gap-2 w-full py-3 bg-accent-gold text-void-black font-display font-bold text-sm uppercase tracking-wider hover:bg-accent-gold/90 transition-colors cursor-pointer">
-                    <span>View Profile</span>
-                    <ArrowUpRight size={18} />
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
         </div>
       </div>

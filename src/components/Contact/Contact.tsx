@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Instagram, Linkedin, Mail, Youtube } from 'lucide-react';
-import { ScrollReveal } from '../ScrollReveal/ScrollReveal';
+import React from "react";
+import { motion } from "framer-motion";
+import { Instagram, Linkedin, Mail, Youtube } from "lucide-react";
+import { ScrollReveal } from "../ScrollReveal/ScrollReveal";
 
 export const Contact: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -30,7 +30,7 @@ export const Contact: React.FC = () => {
 
             {/* Email */}
             <motion.div
-              className="mb-10"
+              className="mb-5"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -63,7 +63,10 @@ export const Contact: React.FC = () => {
                   aria-label="PassWay Group Instagram"
                 >
                   <div className="w-14 h-14 flex items-center justify-center border border-accent-gold/30 bg-accent-gold/10 group-hover:bg-accent-gold/20 group-hover:border-accent-gold/50 transition-all duration-300">
-                    <Instagram className="text-accent-gold group-hover:scale-110 transition-transform duration-300" size={28} />
+                    <Instagram
+                      className="text-accent-gold group-hover:scale-110 transition-transform duration-300"
+                      size={28}
+                    />
                   </div>
                 </a>
 
@@ -76,7 +79,10 @@ export const Contact: React.FC = () => {
                   aria-label="PassWay Group LinkedIn"
                 >
                   <div className="w-14 h-14 flex items-center justify-center border border-accent-gold/30 bg-accent-gold/10 group-hover:bg-accent-gold/20 group-hover:border-accent-gold/50 transition-all duration-300">
-                    <Linkedin className="text-accent-gold group-hover:scale-110 transition-transform duration-300" size={28} />
+                    <Linkedin
+                      className="text-accent-gold group-hover:scale-110 transition-transform duration-300"
+                      size={28}
+                    />
                   </div>
                 </a>
 
@@ -89,7 +95,10 @@ export const Contact: React.FC = () => {
                   aria-label="PassWay Group YouTube"
                 >
                   <div className="w-14 h-14 flex items-center justify-center border border-accent-gold/30 bg-accent-gold/10 group-hover:bg-accent-gold/20 group-hover:border-accent-gold/50 transition-all duration-300">
-                    <Youtube className="text-accent-gold group-hover:scale-110 transition-transform duration-300" size={28} />
+                    <Youtube
+                      className="text-accent-gold group-hover:scale-110 transition-transform duration-300"
+                      size={28}
+                    />
                   </div>
                 </a>
               </div>

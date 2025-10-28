@@ -27,7 +27,7 @@ export const Navigation: React.FC = () => {
             </a>
 
             {/* Desktop Menu */}
-            <ul className="hidden md:flex items-center space-x-8">
+            <ul className="hidden md:flex items-center space-x-12">
               {menuItems.map((item) => (
                 <li key={item.name}>
                   <a
@@ -46,7 +46,7 @@ export const Navigation: React.FC = () => {
               className="md:hidden text-white"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
