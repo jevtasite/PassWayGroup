@@ -22,7 +22,7 @@ export const Navigation: React.FC = () => {
               <img
                 src="/images/logo/passway-logo.png"
                 alt="PassWay Group"
-                className="h-9 w-auto"
+                className="h-7 md:h-9 w-auto"
               />
             </a>
 

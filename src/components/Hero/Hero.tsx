@@ -1,31 +1,19 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { PrimaryButton } from '../Button/PrimaryButton';
-import { OutlineButton } from '../Button/OutlineButton';
-import { ChevronDown, Play, X } from 'lucide-react';
+import React, { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { PrimaryButton } from "../Button/PrimaryButton";
+import { OutlineButton } from "../Button/OutlineButton";
+import { Play, X } from "lucide-react";
 
 export const Hero: React.FC = () => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const backgroundVideoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    const video = backgroundVideoRef.current;
-    if (video) {
-      // Play for 8 seconds then pause
-      const timer = setTimeout(() => {
-        video.pause();
-      }, 8000);
-
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
   const handleDiscoverClick = () => {
-    document.getElementById('players')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("players")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handlePartnerClick = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleWatchVideo = () => {
@@ -37,7 +25,10 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-0"
+    >
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -47,31 +38,60 @@ export const Hero: React.FC = () => {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/videos/passway-hero.mp4" type="video/mp4" />
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
         </video>
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90" />
-        {/* Vignette effect */}
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/60" />
+
+        {/* Gradient Overlay Lines - Full Screen */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Diagonal lines spanning full screen */}
+          <div className="absolute top-0 left-0 w-full h-full">
+            {/* Main diagonal from top-left to bottom-right */}
+            <div className="absolute top-0 left-0 w-[141%] h-px origin-top-left bg-gradient-to-r from-accent-gold/30 via-accent-gold/10 to-transparent transform rotate-45" />
+
+            {/* Diagonal from top-center to bottom-right */}
+            <div className="absolute top-0 left-1/4 w-[141%] h-px origin-top-left bg-gradient-to-r from-transparent via-accent-gold/15 to-transparent transform rotate-45" />
+
+            {/* Diagonal from top-right to bottom-left */}
+            <div className="absolute top-0 right-0 w-[141%] h-px origin-top-right bg-gradient-to-l from-accent-gold/30 via-accent-gold/10 to-transparent transform -rotate-45" />
+
+            {/* Diagonal from top-center to bottom-left */}
+            <div className="absolute top-0 right-1/4 w-[141%] h-px origin-top-right bg-gradient-to-l from-transparent via-accent-gold/15 to-transparent transform -rotate-45" />
+          </div>
+
+          {/* Horizontal lines across screen */}
+          <div className="absolute top-1/3 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-gold/20 to-transparent" />
+          <div className="absolute top-2/3 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-gold/15 to-transparent" />
+
+          {/* Vertical lines across screen */}
+          <div className="absolute top-0 bottom-0 left-1/3 w-px bg-gradient-to-b from-transparent via-accent-gold/20 to-transparent" />
+          <div className="absolute top-0 bottom-0 right-1/3 w-px bg-gradient-to-b from-transparent via-accent-gold/15 to-transparent" />
+
+          {/* Border frame */}
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-gold/40 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-gold/30 to-transparent" />
+          <div className="absolute top-0 bottom-0 left-0 w-px bg-gradient-to-b from-transparent via-accent-gold/30 to-transparent" />
+          <div className="absolute top-0 bottom-0 right-0 w-px bg-gradient-to-b from-transparent via-accent-gold/30 to-transparent" />
+
+          {/* Subtle grid overlay */}
+          <div className="absolute inset-0 opacity-5" style={{
+            backgroundImage: `
+              linear-gradient(rgba(212, 165, 16, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(212, 165, 16, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '100px 100px'
+          }} />
+        </div>
       </div>
 
       {/* Content */}
       <div className="container-site relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Gold accent line - centered */}
-          <motion.div
-            className="w-1 h-24 bg-accent-gold mx-auto mb-8"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 96, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
-
+        <div className="max-w-5xl mx-auto text-center px-3 sm:px-4">
           {/* Main Headline */}
           <motion.h1
-            className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white leading-display tracking-tight mb-6"
+            className="font-display font-bold text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight tracking-tight mb-4 sm:mb-5 md:mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            transition={{ duration: 1, delay: 0.3 }}
           >
             Elite Talent.
             <br />
@@ -80,33 +100,33 @@ export const Hero: React.FC = () => {
 
           {/* Tagline with accent */}
           <motion.div
-            className="mb-8"
+            className="mb-5 sm:mb-7 md:mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 border border-accent-gold/30 bg-black/40 backdrop-blur-sm">
-              <div className="w-2 h-2 bg-accent-gold rounded-full animate-pulse" />
-              <p className="font-display text-body-large text-accent-gold tracking-wider uppercase">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 md:gap-3 px-3 py-2 sm:px-4 sm:py-2.5 md:px-5 md:py-3 border border-accent-gold/30 bg-black/30 backdrop-blur-sm">
+              <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-accent-gold rounded-full animate-pulse" />
+              <p className="font-display text-xs sm:text-sm md:text-base lg:text-lg text-accent-gold tracking-wider uppercase">
                 The boutique agency for Elite talents
               </p>
-              <div className="w-2 h-2 bg-accent-gold rounded-full animate-pulse" />
+              <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-accent-gold rounded-full animate-pulse" />
             </div>
           </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 md:gap-4 justify-center items-center px-2 sm:px-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
           >
             <PrimaryButton onClick={handleDiscoverClick}>
               Discover Our Players
             </PrimaryButton>
             <OutlineButton onClick={handleWatchVideo}>
               <div className="flex items-center gap-2">
-                <Play size={18} />
+                <Play size={16} className="sm:w-[18px] sm:h-[18px]" />
                 <span>Watch Video</span>
               </div>
             </OutlineButton>
@@ -114,60 +134,70 @@ export const Hero: React.FC = () => {
 
           {/* Office Locations */}
           <motion.div
-            className="mt-20"
+            className="mt-10 md:mt-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.5 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
           >
-            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 max-w-4xl mx-auto">
-              {['Leipzig', 'Munich', 'Sofia', 'Basel'].map((city, index) => (
-                <motion.div
-                  key={city}
-                  className="relative group"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 1.7 + index * 0.15 }}
-                >
-                  {/* Gold dot indicator */}
-                  <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-accent-gold rounded-full" />
+            {/* Section label */}
+            <motion.div
+              className="flex items-center justify-center gap-2 md:gap-3 mb-5 md:mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.3 }}
+            >
+              <div className="h-px w-8 md:w-12 bg-gradient-to-r from-transparent to-accent-gold/50" />
+              <span className="font-body text-[10px] md:text-xs text-accent-gold/60 uppercase tracking-[0.2em]">
+                Global Presence
+              </span>
+              <div className="h-px w-8 md:w-12 bg-gradient-to-l from-transparent to-accent-gold/50" />
+            </motion.div>
 
-                  <span className="font-display text-lg md:text-xl text-ghost-white group-hover:text-accent-gold transition-colors duration-quick tracking-wide">
-                    {city}
-                  </span>
+            {/* Office cards grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-4 max-w-4xl mx-auto px-2 md:px-0">
+              {[
+                { city: "Leipzig", country: "Germany" },
+                { city: "Munich", country: "Germany" },
+                { city: "Sofia", country: "Bulgaria" },
+                { city: "Basel", country: "Switzerland" }
+              ].map((office, index) => (
+                <motion.div
+                  key={office.city}
+                  className="relative group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 1.4 + index * 0.1 }}
+                >
+                  {/* Card background with border */}
+                  <div className="relative px-3 py-4 md:px-5 md:py-6 border border-accent-gold/20 bg-black/40 backdrop-blur-sm overflow-hidden group-hover:border-accent-gold/40 transition-all duration-slow">
+                    {/* Hover gradient effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/0 via-accent-gold/0 to-accent-gold/0 group-hover:from-accent-gold/5 group-hover:via-accent-gold/0 group-hover:to-transparent transition-all duration-slow" />
+
+                    {/* Corner accent */}
+                    <div className="absolute top-0 right-0 w-6 h-6 md:w-8 md:h-8 border-t border-r border-accent-gold/30 group-hover:border-accent-gold/60 transition-colors duration-slow" />
+
+                    {/* Content */}
+                    <div className="relative">
+                      {/* Gold dot */}
+                      <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-accent-gold rounded-full mb-2 md:mb-3 group-hover:shadow-[0_0_12px_rgba(212,165,16,0.6)] transition-all duration-slow" />
+
+                      {/* City name */}
+                      <h3 className="font-display text-base md:text-xl text-white mb-0.5 md:mb-1 tracking-tight group-hover:text-accent-gold transition-colors duration-slow">
+                        {office.city}
+                      </h3>
+
+                      {/* Country */}
+                      <p className="font-body text-[10px] md:text-xs text-ghost-white/50 uppercase tracking-wider">
+                        {office.country}
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
-
-            {/* Subtle label */}
-            <motion.p
-              className="text-center mt-4 font-body text-xs text-ghost-white/50 uppercase tracking-widest"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 2.2 }}
-            >
-              Our Offices
-            </motion.p>
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 cursor-pointer"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2 }}
-        onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-      >
-        <motion.div
-          className="flex flex-col items-center gap-2 text-accent-gold"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <span className="font-body text-xs uppercase tracking-widest">Scroll</span>
-          <ChevronDown size={24} />
-        </motion.div>
-      </motion.div>
 
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-void-black to-transparent z-10" />
@@ -200,11 +230,7 @@ export const Hero: React.FC = () => {
               </button>
 
               {/* Video player */}
-              <video
-                className="w-full h-full"
-                controls
-                autoPlay
-              >
+              <video className="w-full h-full" controls autoPlay>
                 <source src="/videos/passway-hero.mp4" type="video/mp4" />
               </video>
 
