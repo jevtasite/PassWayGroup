@@ -1,100 +1,83 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Linkedin, Mail } from 'lucide-react';
 import { ScrollReveal } from '../ScrollReveal/ScrollReveal';
-import { ContactForm } from './ContactForm';
 
 export const Contact: React.FC = () => {
   return (
     <section id="contact" className="section-padding bg-void-black">
       <div className="container-site">
-        <ScrollReveal>
-          <div className="mb-16">
+        <div className="max-w-3xl mx-auto text-center">
+          <ScrollReveal>
             {/* Gold selector line */}
             <motion.div
-              className="w-10 h-1 bg-accent-gold mb-6"
+              className="w-10 h-1 bg-accent-gold mx-auto mb-6"
               initial={{ width: 0 }}
               whileInView={{ width: 40 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             />
 
-            <h2 className="font-display font-bold text-h2 text-white mb-4 leading-display tracking-tight">
-              Let's Talk
+            <h2 className="font-display font-bold text-h2 text-white mb-6 leading-display tracking-tight">
+              Get Your Pass
             </h2>
 
-            <p className="font-body text-body-large text-ghost-white">
-              Get in touch to discuss representation
+            <p className="font-body text-body-large text-ghost-white/80 mb-8">
+              Reach out via email or connect with us on social media
             </p>
-          </div>
-        </ScrollReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left: Contact Form */}
-          <ScrollReveal delay={0.2}>
-            <ContactForm />
-          </ScrollReveal>
+            {/* Email */}
+            <motion.div
+              className="mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <a
+                href="mailto:contact@passwaygroup.com"
+                className="inline-flex items-center gap-3 text-white hover:text-accent-gold transition-colors duration-300 text-xl md:text-2xl font-display"
+              >
+                <Mail size={24} className="text-accent-gold" />
+                contact@passwaygroup.com
+              </a>
+            </motion.div>
 
-          {/* Right: Contact Information */}
-          <ScrollReveal delay={0.4}>
-            <div className="space-y-8">
-              <h3 className="font-display font-medium text-h4 text-white mb-6">
-                Contact Information
-              </h3>
+            {/* Social Media Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <div className="flex items-center justify-center gap-8">
+                <a
+                  href="https://www.instagram.com/passway_group/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                  title="Follow PassWay Group on Instagram"
+                  aria-label="PassWay Group Instagram"
+                >
+                  <div className="w-14 h-14 flex items-center justify-center border border-accent-gold/30 bg-accent-gold/10 group-hover:bg-accent-gold/20 group-hover:border-accent-gold/50 transition-all duration-300">
+                    <Instagram className="text-accent-gold group-hover:scale-110 transition-transform duration-300" size={28} />
+                  </div>
+                </a>
 
-              {/* Email */}
-              <div className="flex items-start space-x-4">
-                <Mail className="text-accent-gold mt-1" size={20} />
-                <div>
-                  <h4 className="font-display font-medium text-body text-white mb-1">
-                    Email
-                  </h4>
-                  <a
-                    href="mailto:contact@passwaygroup.com"
-                    className="font-body text-body-small text-ghost-white hover:text-accent-gold transition-colors duration-quick"
-                  >
-                    contact@passwaygroup.com
-                  </a>
-                </div>
+                <a
+                  href="https://www.linkedin.com/company/passway-group"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                  title="Connect with PassWay Group on LinkedIn"
+                  aria-label="PassWay Group LinkedIn"
+                >
+                  <div className="w-14 h-14 flex items-center justify-center border border-accent-gold/30 bg-accent-gold/10 group-hover:bg-accent-gold/20 group-hover:border-accent-gold/50 transition-all duration-300">
+                    <Linkedin className="text-accent-gold group-hover:scale-110 transition-transform duration-300" size={28} />
+                  </div>
+                </a>
               </div>
-
-              {/* Phone */}
-              <div className="flex items-start space-x-4">
-                <Phone className="text-accent-gold mt-1" size={20} />
-                <div>
-                  <h4 className="font-display font-medium text-body text-white mb-1">
-                    Phone
-                  </h4>
-                  <a
-                    href="tel:+1234567890"
-                    className="font-body text-body-small text-ghost-white hover:text-accent-gold transition-colors duration-quick"
-                  >
-                    +1 (234) 567-890
-                  </a>
-                </div>
-              </div>
-
-              {/* Location */}
-              <div className="flex items-start space-x-4">
-                <MapPin className="text-accent-gold mt-1" size={20} />
-                <div>
-                  <h4 className="font-display font-medium text-body text-white mb-1">
-                    Office
-                  </h4>
-                  <p className="font-body text-body-small text-ghost-white">
-                    London, United Kingdom
-                  </p>
-                </div>
-              </div>
-
-              {/* Additional Info */}
-              <div className="mt-12 pt-8 border-t border-white/10">
-                <p className="font-body text-body-small text-ghost-white leading-body">
-                  Whether you're a player seeking representation or a club looking to connect,
-                  we'd love to hear from you. Our team responds to all inquiries within 24 hours.
-                </p>
-              </div>
-            </div>
+            </motion.div>
           </ScrollReveal>
         </div>
       </div>

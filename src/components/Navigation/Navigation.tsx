@@ -7,8 +7,8 @@ export const Navigation: React.FC = () => {
 
   const menuItems = [
     { name: 'Home', href: '#home' },
-    { name: 'Players', href: '#players' },
     { name: 'About', href: '#about' },
+    { name: 'Players', href: '#players' },
     { name: 'Contact', href: '#contact' },
   ];
 

@@ -12,6 +12,7 @@ export interface Service {
   id: string;
   title: string;
   description: string;
+  details?: string[];
 }
 
 export interface Stat {

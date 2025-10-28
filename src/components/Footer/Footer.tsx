@@ -1,111 +1,35 @@
 import React from 'react';
-import { Linkedin, Instagram } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-void-black border-t border-white/5 py-16">
+    <footer className="border-t border-accent-gold/20 py-12" style={{ backgroundColor: 'rgb(13, 13, 13)' }}>
       <div className="container-site">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Logo & Tagline */}
-          <div>
+        <div className="text-center">
+          {/* Logo */}
+          <div className="mb-6">
             <img
               src="/images/logo/passway-logo.png"
               alt="PassWay Group"
-              className="h-12 w-auto mb-4"
+              className="h-10 w-auto mx-auto"
             />
-            <p className="font-body text-body-small text-ghost-white">
-              The boutique agency for Elite talents!
-            </p>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-display font-medium text-white mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#home"
-                  className="font-body text-body-small text-ghost-white hover:text-accent-gold transition-colors duration-quick"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#players"
-                  className="font-body text-body-small text-ghost-white hover:text-accent-gold transition-colors duration-quick"
-                >
-                  Players
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#about"
-                  className="font-body text-body-small text-ghost-white hover:text-accent-gold transition-colors duration-quick"
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  className="font-body text-body-small text-ghost-white hover:text-accent-gold transition-colors duration-quick"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
+          {/* Tagline */}
+          <p className="font-body text-base text-ghost-white/70 mb-6">
+            The boutique agency for Elite talents
+          </p>
+
+          {/* Divider */}
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-px w-20 bg-accent-gold/20" />
+            <div className="w-2 h-2 bg-accent-gold rounded-full" />
+            <div className="h-px w-20 bg-accent-gold/20" />
           </div>
 
-          {/* Social & Legal */}
-          <div>
-            <h4 className="font-display font-medium text-white mb-4">Connect</h4>
-            <div className="flex space-x-4 mb-6">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-ghost-white hover:text-accent-gold transition-colors duration-quick"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-ghost-white hover:text-accent-gold transition-colors duration-quick"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
-            </div>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="/privacy"
-                  className="font-body text-body-small text-ghost-white hover:text-accent-gold transition-colors duration-quick"
-                >
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/terms"
-                  className="font-body text-body-small text-ghost-white hover:text-accent-gold transition-colors duration-quick"
-                >
-                  Terms of Service
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="pt-8 border-t border-white/5">
-          <p className="font-body text-body-small text-ghost-white text-center">
+          {/* Copyright */}
+          <p className="font-body text-sm text-ghost-white/50">
             © {currentYear} PassWay Group. All rights reserved.
           </p>
         </div>
